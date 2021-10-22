@@ -1,10 +1,10 @@
-
-const App=()=> {
+import { AppProvider } from './providers/app';
+const App = () => {
   return (
-    <div className="App">
-      hello world
-    </div>
+    <AppProvider>
+      <div>hello</div>
+    </AppProvider>
   );
-}
+};
 
 export default App;
