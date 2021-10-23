@@ -1,8 +1,9 @@
-import { AppProvider } from './providers/app';
+import { AppProvider } from 'providers/app';
+import { Routes } from 'providers/Routes';
 const App = () => {
   return (
     <AppProvider>
-      <div>hello</div>
+      <Routes />
     </AppProvider>
   );
 };
