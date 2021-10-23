@@ -1,0 +1,132 @@
+@import '../../assets/scss/abstracts/variables';
+
+.container {
+  width: 1170px;
+  position: relative;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+  padding: {
+    left: 15px;
+    right: 15px;
+  }
+}
+
+.navbar,
+.navbar > .container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.navbar {
+  box-shadow: $navbar-shadow;
+  background-color: $navbar-body-color;
+  padding: $navbar-padding-y $navbar-padding-x;
+  border-bottom: 1px solid $border-color;
+
+  .container {
+    @media (min-width: 576px) {
+      max-width: 540px;
+    }
+    @media (min-width: 768px) {
+      max-width: 720px;
+    }
+    @media (min-width: 992px) {
+      max-width: 960px;
+    }
+    @media (min-width: 1200px) {
+      max-width: 1140px;
+    }
+  }
+
+  /*
+    |-----------------------------------
+    | Start navbar logo or brand etc..
+    |-----------------------------------
+    */
+  .navbar-header {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row-reverse;
+    }
+  }
+
+  /*
+    |-----------------------------------
+    | Start navbar menu
+    |-----------------------------------
+    */
+  .navbar-menu {
+    display: flex;
+    align-items: center;
+    flex-basis: auto;
+    flex-grow: 1;
+
+    @media (max-width: 768px) {
+      display: none;
+      text-align: center;
+    }
+
+    // Ul
+    .navbar-nav {
+      margin-left: auto;
+      flex-direction: row;
+      display: flex;
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style: none;
+
+      @media (max-width: 768px) {
+        width: 100%;
+        display: block;
+        border-top: 1px solid #eee;
+        margin-top: 1rem;
+      }
+
+      > li {
+        > a {
+          color: $text-dark;
+          text-decoration: none;
+          display: inline-block;
+          padding: $navbar-link-padding-y $navbar-link-padding-x;
+          &:hover {
+            color: $navbar-link-hover;
+          }
+          @media (max-width: 768px) {
+            border-bottom: 1px solid $border-color;
+          }
+        }
+        &.active {
+          a {
+            color: $base-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Custom
+.navbar .navbar-header > a span {
+  color: $base-color;
+}
+.navbar .navbar-header h4 {
+  font-weight: 500;
+  font-size: 1.25rem;
+  @media (max-width: 768px) {
+    font-size: 1.05rem;
+  }
+}
