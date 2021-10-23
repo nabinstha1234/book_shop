@@ -14,7 +14,7 @@
 }
 
 .navbar,
-.navbar > .container {
+.container {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -27,9 +27,33 @@
 
 .navbar {
   box-shadow: $navbar-shadow;
+  height: 6rem;
   background-color: $navbar-body-color;
   padding: $navbar-padding-y $navbar-padding-x;
   border-bottom: 1px solid $border-color;
+
+  .search {
+    position: relative;
+    margin-left: 5rem;
+
+    input {
+      height: 2rem;
+      width: 20vw;
+      border-radius: 1rem;
+      background-color: $search-input-color;
+      border: none;
+      padding: 0.5rem 2.5rem;
+      &:focus {
+        outline: none;
+      }
+    }
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      top: 5px;
+      font-size: 1.5rem;
+    }
+  }
 
   .container {
     @media (min-width: 576px) {
@@ -89,44 +113,54 @@
       margin-bottom: 0;
       list-style: none;
 
+      .cart-wrapper {
+        background-color: #cce3d7;
+        height: 2rem;
+        width: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        svg {
+          color: #007031;
+        }
+      }
+
+      .user-icon {
+        font-size: 2.5rem;
+      }
+
+      .nav-item {
+        margin-right: 2rem;
+        width: 10rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        .nav-text {
+          color: $text-light !important;
+        }
+        .count {
+          position: absolute;
+          top: 0.2rem;
+          right: 0.5rem;
+          height: 1.5rem;
+          width: 1.5rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #fff;
+          border-radius: 50%;
+          background-color: #007031;
+        }
+      }
+
       @media (max-width: 768px) {
         width: 100%;
         display: block;
         border-top: 1px solid #eee;
         margin-top: 1rem;
       }
-
-      > li {
-        > a {
-          color: $text-dark;
-          text-decoration: none;
-          display: inline-block;
-          padding: $navbar-link-padding-y $navbar-link-padding-x;
-          &:hover {
-            color: $navbar-link-hover;
-          }
-          @media (max-width: 768px) {
-            border-bottom: 1px solid $border-color;
-          }
-        }
-        &.active {
-          a {
-            color: $base-color;
-          }
-        }
-      }
     }
-  }
-}
-
-// Custom
-.navbar .navbar-header > a span {
-  color: $base-color;
-}
-.navbar .navbar-header h4 {
-  font-weight: 500;
-  font-size: 1.25rem;
-  @media (max-width: 768px) {
-    font-size: 1.05rem;
   }
 }
