@@ -14,8 +14,9 @@ export const Routes = () => {
   return (
     <Router>
       <Switch>
-        <PublicRoute path={routes.login.path} component={routes.login.component} />
-        <ProtctedRoute path={routes.home.path} component={routes.home.component} />
+        <PublicRoute exact path={routes.login.path} component={routes.login.component} />
+        <ProtctedRoute exact path={routes.home.path} component={routes.home.component} />
+        <ProtctedRoute exact path={routes.cart.path} component={routes.cart.component} />
       </Switch>
     </Router>
   );

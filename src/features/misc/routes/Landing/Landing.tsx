@@ -4,8 +4,6 @@ import { TopBar, Product } from '../../components';
 import { getAllBooks, IBook, BookState } from '../../Slice/bookSlice';
 import { fetchBooks } from '../../api/Book';
 
-import styles from './Landing.module.scss';
-
 interface Props {}
 
 export const LandingPage = (props: Props) => {

@@ -115,6 +115,7 @@ hr {
 
   &:after {
     content: '+';
+    cursor: pointer;
     font-family: 'Raleway', sans-serif;
     font-size: 70px;
     color: $green;

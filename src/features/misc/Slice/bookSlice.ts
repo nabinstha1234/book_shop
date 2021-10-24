@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { fetchBooks } from '../api/Book';
 
 export interface IBook {
@@ -34,6 +34,14 @@ export const bookSlice = createSlice({
         state.books = state.books.filter((book: IBook) => book.genre.includes(genre));
       });
     },
+    removeStokFromBook: (state, action) => {
+      state.books = state.books.map((book: IBook) => {
+        if (book.id === action.payload) {
+          book.stock = book.stock - 1;
+        }
+        return book;
+      });
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchBooks.fulfilled, (state, action) => {
@@ -50,6 +58,6 @@ export const bookSlice = createSlice({
   },
 });
 
-export const { filterBooksByGenre } = bookSlice.actions;
+export const { filterBooksByGenre, removeStokFromBook } = bookSlice.actions;
 export const getAllBooks = (state: any) => state.book;
 export default bookSlice.reducer;

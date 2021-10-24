@@ -1,6 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import { formatCurrency } from 'utils';
+
+import { useAppSelector } from 'app/hooks';
+
+import { getAllCartItem } from 'features/cart/Slice/cartSlice';
+
+import routes from 'config/routes';
 
 import styles from './Header.module.scss';
 
@@ -9,6 +16,21 @@ interface Props {
 }
 
 const Header = ({ isLoggedIn = false }: Props) => {
+  const cartItems = useAppSelector(getAllCartItem);
+  const history = useHistory();
+
+  const getTotalCartPrice = () => {
+    return cartItems?.reduce((acc: any, item: any) => {
+      return acc + item.price * item.quantity;
+    }, 0);
+  };
+
+  const handleCartClick = () => {
+    if (cartItems.length) {
+      history.push(routes.cart.path);
+    }
+  };
+
   return (
     <nav className={styles['navbar']}>
       <div className={styles['container']}>
@@ -26,11 +48,12 @@ const Header = ({ isLoggedIn = false }: Props) => {
         <div className={styles['navbar-menu']} id="open-navbar1">
           <ul className={styles['navbar-nav']}>
             <li className={styles['nav-item']}>
-              <span className={styles['nav-text']}>Rs.</span> 4567.78 &nbsp;
-              <div className={styles['cart-wrapper']}>
+              <span className={styles['nav-text']}>Rs.</span>
+              {cartItems.length ? formatCurrency(getTotalCartPrice()) : 0} &nbsp;
+              <div onClick={() => handleCartClick()} className={styles['cart-wrapper']}>
                 <Icon className="icon-cart" icon="mdi:cart" />
               </div>
-              <div className={styles['count']}>10</div>
+              {cartItems.length && <div className={styles['count']}>{cartItems.length || 0}</div>}
             </li>
             <li className={styles['nav-item']}>
               <span className={styles['nav-text']}>Hello,</span> Nabin &nbsp;
