@@ -17,3 +17,17 @@ $navbar-link-padding-x: 1rem;
 
 $search-input-color: #f7f6f1;
 $text-light: #7f7f7f;
+
+$primaryText: #212121;
+$secondaryText: #b6b6b6;
+$white: #ffffff;
+$green: #4caf50;
+$bgColor: #fafafa;
+$bgColorDarken: darken($bgColor, 8.25);
+
+$cardHeight: 390px;
+$cardDescriptionHeight: 65px;
+$screen-sm: 768px;
+
+$bezierProperty: cubic-bezier(0.165, 0.84, 0.44, 1);
+$bezierDuration: 0.6s;

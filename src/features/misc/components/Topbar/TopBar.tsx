@@ -4,7 +4,7 @@ import styles from './TopBar.module.scss';
 
 interface Props {}
 
-const TopBar = (props: Props) => {
+export const TopBar = (props: Props) => {
   return (
     <div className={`container mt-2 rounded d-flex ${styles['top-bar']}`}>
       <div className={styles['item-left']}>Filter</div>
@@ -13,5 +13,3 @@ const TopBar = (props: Props) => {
     </div>
   );
 };
-
-export default TopBar;
