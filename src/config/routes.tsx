@@ -3,6 +3,7 @@ import { lazyImport } from 'utils/lazyImport';
 const { LandingPage } = lazyImport(() => import('../features/misc'), 'LandingPage');
 const { Login } = lazyImport(() => import('../features/auth'), 'Login');
 const { Cart } = lazyImport(() => import('../features/cart'), 'Cart');
+const { Checkout } = lazyImport(() => import('../features/checkout'), 'Checkout');
 
 const routes = {
   home: {
@@ -16,6 +17,10 @@ const routes = {
   cart: {
     path: '/cart',
     component: Cart,
+  },
+  checkout: {
+    path: '/checkout',
+    component: Checkout,
   },
 };
 

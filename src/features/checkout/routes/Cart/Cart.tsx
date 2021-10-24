@@ -1,17 +1,14 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { Table, Image, Button } from 'react-bootstrap';
 import { Icon } from '@iconify/react';
 import { useAppSelector } from 'app/hooks';
-import routes from 'config/routes';
 
-import { getAllCartItem, ICartItem } from '../../Slice/cartSlice';
+import { getAllCartItem, ICartItem } from '../../Slice/checkoutSlice';
 
 interface Props {}
 
 export const Cart = (props: Props) => {
   let cartItems = useAppSelector(getAllCartItem);
-  const history = useHistory();
 
   const getTotalPirce = (): number => {
     return cartItems.reduce((acc: any, item: any) => {
@@ -57,11 +54,7 @@ export const Cart = (props: Props) => {
       <div className="d-flex justify-content-end">
         <div>Total: Rs.{getTotalPirce()}</div>
       </div>
-      <Button
-        className="float-right"
-        onClick={() => history.push(routes.checkout.path)}
-        disabled={cartItems.length < 1}
-      >
+      <Button className="float-right" disabled={cartItems.length < 1}>
         Checkout
       </Button>
     </div>
