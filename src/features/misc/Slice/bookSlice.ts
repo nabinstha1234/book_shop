@@ -29,8 +29,10 @@ export const bookSlice = createSlice({
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
-    filterBooksByGenre: (state, action: PayloadAction<string>) => {
-      state.books = state.books.filter((book) => book.genre === action.payload);
+    filterBooksByGenre: (state, action) => {
+      action.payload.forEach((genre: string) => {
+        state.books = state.books.filter((book: IBook) => book.genre.includes(genre));
+      });
     },
   },
   extraReducers: (builder) => {
